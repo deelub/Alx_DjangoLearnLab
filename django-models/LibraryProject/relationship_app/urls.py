@@ -6,6 +6,7 @@ from . import views
 
 
 
+
 urlpatterns = [
     path('login/', LoginView.as_view(template_name='relationship_app/login.html'), name='login'),
     path('logout/', LogoutView.as_view(template_name='relationship_app/logout.html'), name='logout'),
@@ -34,3 +35,8 @@ urlpatterns = [
     path('books/<int:pk>/delete/', views.delete_book, name='delete_book'),
     # other URL patterns like book_list, book_detail if needed
 ]
+
+path('add_book/', views.add_book, name='add_book'),
+path('edit_book/<int:pk>/', views.edit_book, name='edit_book'),
+
+
