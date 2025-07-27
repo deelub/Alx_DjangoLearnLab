@@ -10,10 +10,14 @@ from relationship_app.models import Author, Book, Library, Librarian
 def run_queries():
     # 1. Query all books by a specific author
     author_name = "Jane Austen"
-    books = Book.objects.filter(author__name=author_name)
+try:
+    author = Author.objects.get(name=author_name)
+    books = Book.objects.filter(author=author)
     print(f"\nBooks by {author_name}:")
     for book in books:
         print(f"- {book.title}")
+except Author.DoesNotExist:
+    print(f"\nAuthor '{author_name}' not found.")
 
     # 2. List all books in a library
     library_name = "Central Library"
