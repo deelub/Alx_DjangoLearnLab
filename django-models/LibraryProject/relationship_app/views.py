@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test,perm
 from django.shortcuts import render
 from django.contrib.auth.decorators import user_passes_test
 from .models import UserProfile
+from django.contrib.auth.decorators import permission_required
 
 
 
@@ -99,3 +100,6 @@ def delete_book(request, pk):
         book.delete()
         return redirect('book_list')
     return render(request, 'relationship_app/book_confirm_delete.html', {'book': book})
+
+...
+
